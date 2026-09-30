@@ -1,0 +1,55 @@
+---
+import { site } from '../data/site';
+
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/services', label: 'Services' },
+	{ href: '/contact', label: 'Contact' },
+];
+---
+
+<header>
+	<div class="container nav">
+		<a href="/" class="logo">{site.name}</a>
+		<nav>
+			{links.map((link) => <a href={link.href}>{link.label}</a>)}
+			<a href="/contact" class="button">Get a Quote</a>
+		</nav>
+	</div>
+</header>
+
+<style>
+	header {
+		border-bottom: 1px solid #e5e7eb;
+		background: #fff;
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
+	.nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 1rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	.logo {
+		font-weight: 800;
+		font-size: 1.25rem;
+		text-decoration: none;
+		color: var(--color-primary);
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+	}
+	nav a:not(.button) {
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 500;
+	}
+</style>

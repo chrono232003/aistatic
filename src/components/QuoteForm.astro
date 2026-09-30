@@ -1,0 +1,54 @@
+---
+import { services } from '../data/site';
+---
+
+<!--
+	This is a static site, so the form needs a service to receive submissions.
+	Options: Netlify Forms (add data-netlify="true"), Formspree, or Web3Forms.
+	Set the form's action to your provider's endpoint.
+-->
+<form class="card" method="POST" action="#">
+	<label>
+		Name
+		<input type="text" name="name" required />
+	</label>
+	<label>
+		Email
+		<input type="email" name="email" required />
+	</label>
+	<label>
+		Phone
+		<input type="tel" name="phone" />
+	</label>
+	<label>
+		Service
+		<select name="service">
+			{services.map((s) => <option>{s.name}</option>)}
+		</select>
+	</label>
+	<label>
+		Tell us about your space
+		<textarea name="message" rows="4" placeholder="Bedrooms, bathrooms, square footage, preferred dates…"></textarea>
+	</label>
+	<button type="submit" class="button">Request a Free Quote</button>
+</form>
+
+<style>
+	form {
+		display: grid;
+		gap: 1rem;
+		max-width: 560px;
+	}
+	label {
+		display: grid;
+		gap: 0.35rem;
+		font-weight: 500;
+	}
+	input, select, textarea {
+		font: inherit;
+		padding: 0.6rem 0.75rem;
+		border: 1px solid #d1d5db;
+		border-radius: 8px;
+	}
+	button { justify-self: start; }
+</style>

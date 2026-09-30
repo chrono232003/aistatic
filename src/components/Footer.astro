@@ -1,0 +1,23 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer>
+	<div class="container">
+		<p><strong>{site.name}</strong> · {site.phone} · {site.email}</p>
+		<p>{site.hours}</p>
+		<p class="copy">© {year} {site.name}. All rights reserved.</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		background: var(--color-text);
+		color: #e5e7eb;
+		padding: 2rem 0;
+		text-align: center;
+	}
+	p { margin: 0.25rem 0; }
+	.copy { color: #9ca3af; font-size: 0.875rem; margin-top: 1rem; }
+</style>

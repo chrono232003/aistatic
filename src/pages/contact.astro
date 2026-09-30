@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { site } from '../data/site';
+---
+
+<Layout title="Contact" description={`Contact ${site.name} for a free cleaning quote.`}>
+	<section class="section">
+		<div class="container">
+			<h1>Contact Us</h1>
+			<p>
+				Call <a href={`tel:${site.phone}`}>{site.phone}</a> or email
+				<a href={`mailto:${site.email}`}>{site.email}</a>. We're available {site.hours}.
+			</p>
+			<QuoteForm />
+		</div>
+	</section>
+</Layout>

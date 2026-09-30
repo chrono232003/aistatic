@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { site, services } from '../data/site';
+---
+
+<Layout>
+	<section class="hero">
+		<div class="container">
+			<h1>{site.name}</h1>
+			<p class="lead">{site.tagline}</p>
+			<div class="actions">
+				<a href="#quote" class="button">Get a Free Quote</a>
+				<a href={`tel:${site.phone}`} class="phone">Call {site.phone}</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Our Services</h2>
+			<div class="grid">
+				{services.map((s) => <ServiceCard {...s} />)}
+			</div>
+			<p><a href="/services">See all services →</a></p>
+		</div>
+	</section>
+
+	<section class="section section-alt">
+		<div class="container">
+			<h2>Why Choose Us</h2>
+			<div class="grid">
+				<div class="card"><h3>Insured &amp; Vetted</h3><p>Every cleaner is background-checked and fully insured.</p></div>
+				<div class="card"><h3>Satisfaction Guaranteed</h3><p>Not happy? We'll come back and make it right, free.</p></div>
+				<div class="card"><h3>Eco-Friendly Products</h3><p>Safe for kids, pets, and the planet.</p></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Service Area</h2>
+			<p>We proudly serve these neighborhoods and surrounding areas:</p>
+			<ul class="areas">
+				{site.serviceAreas.map((area) => <li>{area}</li>)}
+			</ul>
+		</div>
+	</section>
+
+	<section class="section section-alt" id="quote">
+		<div class="container">
+			<h2>Get a Free Quote</h2>
+			<p>Tell us a little about your space and we'll get back to you within one business day.</p>
+			<QuoteForm />
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.hero {
+		background: linear-gradient(135deg, var(--color-accent), #fff);
+		padding: 5rem 0;
+	}
+	.hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0 0 0.5rem; }
+	.lead { font-size: 1.25rem; color: var(--color-muted); max-width: 40ch; }
+	.actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+	.phone { font-weight: 600; }
+	.areas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		list-style: none;
+		padding: 0;
+	}
+	.areas li {
+		background: var(--color-accent);
+		padding: 0.4rem 1rem;
+		border-radius: 999px;
+	}
+</style>

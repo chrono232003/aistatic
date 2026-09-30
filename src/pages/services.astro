@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { services } from '../data/site';
+---
+
+<Layout title="Services" description="Standard, deep, move-in/move-out, and office cleaning services.">
+	<section class="section">
+		<div class="container">
+			<h1>Our Services</h1>
+			<p>Every clean is backed by our satisfaction guarantee. Prices depend on the size and condition of your space.</p>
+			<div class="grid">
+				{services.map((s) => <ServiceCard {...s} />)}
+			</div>
+			<p style="margin-top: 2rem;"><a href="/contact" class="button">Request a Quote</a></p>
+		</div>
+	</section>
+</Layout>
