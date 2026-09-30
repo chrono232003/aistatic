@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import QuoteForm from '../components/QuoteForm.astro';
@@ -7,13 +8,22 @@ import { site, services } from '../data/site';
 
 <Layout>
 	<section class="hero">
-		<div class="container">
-			<h1>{site.name}</h1>
-			<p class="lead">{site.tagline}</p>
-			<div class="actions">
-				<a href="#quote" class="button">Get a Free Quote</a>
-				<a href={`tel:${site.phone}`} class="phone">Call {site.phone}</a>
+		<div class="container hero-grid">
+			<div>
+				<h1>{site.name}</h1>
+				<p class="lead">{site.tagline}</p>
+				<div class="actions">
+					<a href="#quote" class="button">Get a Free Quote</a>
+					<a href={`tel:${site.phone}`} class="phone">Call {site.phone}</a>
+				</div>
 			</div>
+			<Image
+				src={site.heroImage}
+				alt={site.heroImageAlt}
+				width={900}
+				loading="eager"
+				class="hero-photo"
+			/>
 		</div>
 	</section>
 
@@ -60,7 +70,21 @@ import { site, services } from '../data/site';
 <style>
 	.hero {
 		background: linear-gradient(135deg, var(--color-accent), #fff);
-		padding: 5rem 0;
+		padding: 4rem 0;
+	}
+	.hero-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2.5rem;
+		align-items: center;
+	}
+	.hero-photo {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		border-radius: var(--radius);
+		box-shadow: 0 20px 40px -20px rgb(15 118 110 / 0.45);
 	}
 	.hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0 0 0.5rem; }
 	.lead { font-size: 1.25rem; color: var(--color-muted); max-width: 40ch; }
